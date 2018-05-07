@@ -1,10 +1,11 @@
 '''
 tornado.options模块   命令行传参
-定义 define
-取出 parse_command_line
+定义 define   定义之后可以通过命令行传参启动
+取出 parse_command_line           定义和取出应该是同时出现的,没有传入就使用默认但是必须有取出的函数
 使用 tornado.options.options.变量方法
 
 导入其他模块 tornado.options.parse_config_file(path路径)
+可以把配置统一写在其他文件,通过导入文件
 '''
 
 # coding:utf-8
@@ -31,7 +32,7 @@ if __name__ == "__main__":
     # 取出命令行参数  传参方式 --port=9000
     tornado.options.parse_command_line()
 
-    print (tornado.options.options.itcast) # 就为了检验命令行传入的itcast
+    print (tornado.options.options.itcast) # 就为了检验itcast
 
 
 
@@ -40,6 +41,6 @@ if __name__ == "__main__":
     ])
     http_server = tornado.httpserver.HTTPServer(app)
 
-    # 模块.options 全局options对象，define定义的变量是对象属性
+                                # define定义的变量是对象属性
     http_server.listen(tornado.options.options.port)
     tornado.ioloop.IOLoop.current().start()
